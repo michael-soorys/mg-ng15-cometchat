@@ -1,0 +1,101 @@
+{
+  "name": "mg-ng15-cometchat",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "mg-ng15-cometchat",
+  "sourceRoot": "apps/mg-ng15-cometchat/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/mg-ng15-cometchat",
+        "index": "apps/mg-ng15-cometchat/src/index.html",
+        "main": "apps/mg-ng15-cometchat/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/mg-ng15-cometchat/tsconfig.app.json",
+        "assets": [
+          "apps/mg-ng15-cometchat/src/favicon.ico",
+          "apps/mg-ng15-cometchat/src/assets"
+        ],
+        "styles": ["apps/mg-ng15-cometchat/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "mg-ng15-cometchat:build:production"
+        },
+        "development": {
+          "browserTarget": "mg-ng15-cometchat:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "mg-ng15-cometchat:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/mg-ng15-cometchat/**/*.ts",
+          "apps/mg-ng15-cometchat/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/mg-ng15-cometchat/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "mg-ng15-cometchat:build"
+      }
+    }
+  }
+}
