@@ -13,6 +13,7 @@
     "@angular/platform-browser": "~15.2.0",
     "@angular/platform-browser-dynamic": "~15.2.0",
     "@angular/router": "~15.2.0",
+    "@cometchat/chat-uikit-angular": "^4.0.0-beta.1.4",
     "@nrwl/angular": "15.9.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
